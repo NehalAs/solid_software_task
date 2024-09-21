@@ -23,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
           final HomeCubit homeCubit = HomeCubit.get(context);
 
           return GestureDetector(
-            onTap: homeCubit.changeBackgroundHomeColor,
+            onTap: homeCubit.changeBackgroundHomeColorRandomly,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
               color: homeCubit.backgroundHomeColor,

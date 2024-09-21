@@ -44,7 +44,7 @@ class HomeCubit extends Cubit<HomeState> {
 
 
   /// Change background color and emit it's state
-  void changeBackgroundHomeColor()
+  void changeBackgroundHomeColorRandomly()
   {
     backgroundHomeColor=generateRandomColor();
     addColorToRecentList(backgroundHomeColor);
@@ -64,5 +64,12 @@ class HomeCubit extends Cubit<HomeState> {
     }
 
     emit(AddToRecentColorsState());
+  }
+
+  /// change color when press to specific color
+   void selectBackgroundHomeColor(Color color)
+   {
+    backgroundHomeColor=color;
+    emit(ChangeBackgroundHomeColorState());
   }
 }
