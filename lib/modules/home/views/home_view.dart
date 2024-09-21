@@ -12,24 +12,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      // ignore: avoid_unused_parameters
-      create: (context) => HomeCubit(),
-      child: BlocBuilder<HomeCubit, HomeState>(
-        // ignore: avoid_unused_parameters
-        builder: (context,state) {
-
-          final HomeCubit homeCubit=HomeCubit.get(context);
-
-          return  GestureDetector(
-            onTap: homeCubit.changeBackgroundHomeColor,
-            child: Scaffold(
-              backgroundColor:homeCubit.backgroundHomeColor,
-              body: const HomeViewBody(),
-            ),
-          );
-        },
-      ),
+    return const Scaffold(
+      body: HomeViewBody(),
     );
   }
 }

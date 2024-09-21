@@ -14,6 +14,12 @@ class HomeCubit extends Cubit<HomeState> {
   /// Full opacity
   int alphaValue = 255;
 
+  /// Colors history list
+  List<Color> recentColors=[];
+
+  /// Max list Length
+  int maxListLength=10;
+
   /// Creates a new instance of [HomeCubit] with the initial state.
   HomeCubit() : super(HomeInitial());
 
@@ -41,6 +47,22 @@ class HomeCubit extends Cubit<HomeState> {
   void changeBackgroundHomeColor()
   {
     backgroundHomeColor=generateRandomColor();
+    addColorToRecentList(backgroundHomeColor);
     emit(ChangeBackgroundHomeColorState());
+  }
+
+  /// Add color to recent colors list
+  void addColorToRecentList(Color color)
+  {
+    if(recentColors.length == maxListLength)
+      {
+        recentColors.insert(0,color);
+        recentColors.removeLast();
+      }
+    else{
+      recentColors.insert(0,color);
+    }
+
+    emit(AddToRecentColorsState());
   }
 }
